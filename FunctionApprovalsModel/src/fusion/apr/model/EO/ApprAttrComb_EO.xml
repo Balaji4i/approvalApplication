@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ApprAttrComb_EO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="XXFND_APPR_ATTR_COMB"
+  AliasName="ApprAttrComb_EO"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="AttrCombId"
+    IsNotNull="true"
+    ColumnName="ATTR_COMB_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="XXFND_APPR_ATTR_COMB"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AttrGrpId"
+    IsNotNull="true"
+    ColumnName="ATTR_GRP_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="XXFND_APPR_ATTR_COMB">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute1"
+    Precision="60"
+    ColumnName="ATTRIBUTE1"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXFND_APPR_ATTR_COMB"
+    IsUnique="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute2"
+    Precision="60"
+    ColumnName="ATTRIBUTE2"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXFND_APPR_ATTR_COMB"
+    IsUnique="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute3"
+    Precision="60"
+    ColumnName="ATTRIBUTE3"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXFND_APPR_ATTR_COMB"
+    IsUnique="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute4"
+    Precision="60"
+    ColumnName="ATTRIBUTE4"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXFND_APPR_ATTR_COMB"
+    IsUnique="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attribute5"
+    Precision="60"
+    ColumnName="ATTRIBUTE5"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXFND_APPR_ATTR_COMB"
+    IsUnique="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UserGrpId"
+    ColumnName="USER_GRP_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="XXFND_APPR_ATTR_COMB"
+    IsUnique="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ActiveYn"
+    Precision="1"
+    ColumnName="ACTIVE_YN"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXFND_APPR_ATTR_COMB">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    Precision="60"
+    ColumnName="CREATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXFND_APPR_ATTR_COMB"
+    IsUpdateable="while_insert"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreationDate"
+    IsNotNull="true"
+    ColumnName="CREATION_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="XXFND_APPR_ATTR_COMB"
+    IsUpdateable="while_insert"
+    HistoryColumn="DateHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdatedBy"
+    IsNotNull="true"
+    Precision="60"
+    ColumnName="LAST_UPDATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXFND_APPR_ATTR_COMB"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdateDate"
+    IsNotNull="true"
+    ColumnName="LAST_UPDATE_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="XXFND_APPR_ATTR_COMB"
+    HistoryColumn="DateHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdateLogin"
+    IsNotNull="true"
+    Precision="150"
+    ColumnName="LAST_UPDATE_LOGIN"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXFND_APPR_ATTR_COMB"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="ApprAttrComb_EOKey"
+    AltKey="true">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="UNIQUECOMB_KEY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="fusion.apr.model.EO.ApprAttrComb_EO.Attribute1"/>
+      <Item Value="fusion.apr.model.EO.ApprAttrComb_EO.Attribute2"/>
+      <Item Value="fusion.apr.model.EO.ApprAttrComb_EO.Attribute3"/>
+      <Item Value="fusion.apr.model.EO.ApprAttrComb_EO.Attribute4"/>
+      <Item Value="fusion.apr.model.EO.ApprAttrComb_EO.Attribute5"/>
+      <Item Value="fusion.apr.model.EO.ApprAttrComb_EO.UserGrpId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0049910">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0049910"/>
+      <Attr Name="_checkCondition" Value='"ATTR_COMB_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="fusion.apr.model.EO.ApprAttrComb_EO.AttrCombId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0049911">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0049911"/>
+      <Attr Name="_checkCondition" Value='"ATTR_GRP_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="fusion.apr.model.EO.ApprAttrComb_EO.AttrGrpId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0049912">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0049912"/>
+      <Attr Name="_checkCondition" Value='"USER_GRP_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="SysC0049913">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0049913"/>
+      <Attr Name="_checkCondition" Value='"CREATED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="fusion.apr.model.EO.ApprAttrComb_EO.CreatedBy"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0049914">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0049914"/>
+      <Attr Name="_checkCondition" Value='"CREATION_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="fusion.apr.model.EO.ApprAttrComb_EO.CreationDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0049915">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0049915"/>
+      <Attr Name="_checkCondition" Value='"LAST_UPDATED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="fusion.apr.model.EO.ApprAttrComb_EO.LastUpdatedBy"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0049916">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0049916"/>
+      <Attr Name="_checkCondition" Value='"LAST_UPDATE_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="fusion.apr.model.EO.ApprAttrComb_EO.LastUpdateDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0049917">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0049917"/>
+      <Attr Name="_checkCondition" Value='"LAST_UPDATE_LOGIN" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="fusion.apr.model.EO.ApprAttrComb_EO.LastUpdateLogin"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="XxfndApprAttrCombPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="XXFND_APPR_ATTR_COMB_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="fusion.apr.model.EO.ApprAttrComb_EO.AttrCombId"/>
+    </AttrArray>
+  </Key>
+  <validation:UniqueKeyValidationBean
+    Name="ApprAttrComb_EO_Rule_0"
+    KeyName="ApprAttrComb_EOKey"
+    ResId="fusion.apr.model.EO.ApprAttrComb_EO_Rule_0">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="Attribute1"/>
+      <validation:Item
+        Value="Attribute2"/>
+      <validation:Item
+        Value="Attribute3"/>
+      <validation:Item
+        Value="Attribute4"/>
+      <validation:Item
+        Value="Attribute5"/>
+      <validation:Item
+        Value="UserGrpId"/>
+    </validation:OnAttributes>
+  </validation:UniqueKeyValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.FunctionApprovalsModelBundle"/>
+  </ResourceBundle>
+</Entity>

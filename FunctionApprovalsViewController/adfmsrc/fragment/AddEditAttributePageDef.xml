@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="AddEditAttributePageDef"
+                Package="fragment">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ApprAttrGroup_VO1" RangeSize="25"
+              DataControl="AttributeGroup_AMDataControl"
+              id="ApprAttrGroup_VO1Iterator"/>
+    <iterator Binds="ApprAttributes_VO1" RangeSize="25"
+              DataControl="AttributeGroup_AMDataControl"
+              id="ApprAttributes_VO1Iterator"/>
+    <iterator Binds="ApprAttrComb_VO1" RangeSize="25"
+              DataControl="AttributeGroup_AMDataControl"
+              id="ApprAttrComb_VO1Iterator"/>
+    <iterator Binds="FuncApprovals_VO1" RangeSize="25"
+              DataControl="Functions_AMDataControl"
+              id="FuncApprovals_VO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="ApprAttrGroup_VO1Iterator" id="AttrGrpName">
+      <AttrNames>
+        <Item Value="AttrGrpName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApprAttrGroup_VO1Iterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="ApprAttributes_VO1Iterator" id="ApprAttributes_VO1">
+      <nodeDefinition DefName="fusion.apr.model.VO.ApprAttributes_VO"
+                      Name="ApprAttributes_VO10">
+        <AttrNames>
+          <Item Value="SeqNumber"/>
+          <Item Value="AttributeColumn"/>
+          <Item Value="ColumnName"/>
+          <Item Value="SrcTable"/>
+          <Item Value="SrcColumn"/>
+          <Item Value="SrcDispColumn"/>
+          <Item Value="SrcLookupType"/>
+          <Item Value="Trns_Active" Binds="Trns_Active"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="ApprAttributes_VO1Iterator" id="Trns_Active"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Trns_Active"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <action IterBinding="ApprAttributes_VO1Iterator" id="Delete"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="ApprAttributes_VO1Iterator" id="CreateInsert"
+            InstanceName="AttributeGroup_AMDataControl.ApprAttributes_VO1"
+            DataControl="AttributeGroup_AMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <tree IterBinding="ApprAttrComb_VO1Iterator" id="ApprAttrComb_VO1">
+      <nodeDefinition DefName="fusion.apr.model.VO.ApprAttrComb_VO"
+                      Name="ApprAttrComb_VO10">
+        <AttrNames>
+          <Item Value="Attribute1"/>
+          <Item Value="Attribute2"/>
+          <Item Value="Attribute3"/>
+          <Item Value="Attribute4"/>
+          <Item Value="Attribute5"/>
+          <Item Value="UserGrpId"/>
+          <Item Value="Trns_Active_1" Binds="Trns_Active_1"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="ApprAttrComb_VO1Iterator" id="Trns_Active_1"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Trns_Active_1"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="AttributeGroup_AMDataControl"/>
+    <action IterBinding="ApprAttrComb_VO1Iterator" id="Delete1"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="ApprAttrComb_VO1Iterator" id="CreateInsert1"
+            InstanceName="AttributeGroup_AMDataControl.ApprAttrComb_VO1"
+            DataControl="AttributeGroup_AMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <tree IterBinding="FuncApprovals_VO1Iterator" id="FuncApprovals_VO1">
+      <nodeDefinition DefName="fusion.apr.model.VO.FuncApprovals_VO"
+                      Name="FuncApprovals_VO10">
+        <AttrNames>
+          <Item Value="FuncId"/>
+          <Item Value="AttrGrpId"/>
+          <Item Value="Trans_Active" Binds="Trans_Active"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="FuncApprovals_VO1Iterator" id="Trans_Active"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Trans_Active"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <action IterBinding="FuncApprovals_VO1Iterator" id="CreateInsert2"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="FuncApprovals_VO1Iterator" id="Delete2"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <button IterBinding="ApprAttrGroup_VO1Iterator" id="ActiveYn"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="ActiveYn"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <action id="Rollback" DataControl="AttributeGroup_AMDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+  </bindings>
+</pageDefinition>

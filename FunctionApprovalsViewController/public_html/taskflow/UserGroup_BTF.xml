@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="UserGroup_BTF">
+    <default-activity id="__1">SearchUserGroup</default-activity>
+    <managed-bean id="__3">
+      <managed-bean-name id="__2">backing_fragment_SearchUserGroup</managed-bean-name>
+      <managed-bean-class id="__4">fusion.apr.view.backing.SearchUserGroup</managed-bean-class>
+      <managed-bean-scope id="__5">backingBean</managed-bean-scope>
+      <!--oracle-jdev-comment:managed-bean-jsp-link:1fragment/SearchUserGroup.jsff-->
+    </managed-bean>
+    <managed-bean id="__7">
+      <managed-bean-name id="__8">backing_fragment_AddEditUserGroup</managed-bean-name>
+      <managed-bean-class id="__6">fusion.apr.view.backing.AddEditUserGroup</managed-bean-class>
+      <managed-bean-scope id="__9">backingBean</managed-bean-scope>
+      <!--oracle-jdev-comment:managed-bean-jsp-link:1fragment/AddEditUserGroup.jsff-->
+    </managed-bean>
+    <view id="SearchUserGroup">
+      <page>/fragment/SearchUserGroup.jsff</page>
+    </view>
+    <view id="AddEditUserGroup">
+      <page>/fragment/AddEditUserGroup.jsff</page>
+    </view>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__10">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Execute">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__21">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__32">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__11">
+      <from-activity-id id="__12">SearchUserGroup</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome id="__15">add</from-outcome>
+        <to-activity-id id="__14">CreateInsert</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__33">
+        <from-outcome id="__35">edit</from-outcome>
+        <to-activity-id id="__34">ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__16">
+      <from-activity-id id="__17">CreateInsert</from-activity-id>
+      <control-flow-case id="__19">
+        <from-outcome id="__20">CreateInsert</from-outcome>
+        <to-activity-id id="__18">AddEditUserGroup</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__22">
+      <from-activity-id id="__23">AddEditUserGroup</from-activity-id>
+      <control-flow-case id="__24">
+        <from-outcome id="__26">back</from-outcome>
+        <to-activity-id id="__25">Execute</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__27">
+      <from-activity-id id="__28">Execute</from-activity-id>
+      <control-flow-case id="__31">
+        <from-outcome id="__30">Execute</from-outcome>
+        <to-activity-id id="__29">SearchUserGroup</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__36">
+      <from-activity-id id="__37">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__40">
+        <from-outcome id="__39">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__38">AddEditUserGroup</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

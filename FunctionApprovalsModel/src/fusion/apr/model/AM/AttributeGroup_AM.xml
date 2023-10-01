@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AttributeGroup_AM"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true"
+  ComponentClass="fusion.apr.model.AM.AttributeGroup_AMImpl"
+  DefClass="fusion.apr.model.AM.AttributeGroup_AMDefImpl"
+  ComponentInterface="fusion.apr.model.AM.common.AttributeGroup_AM"
+  ClientProxyName="fusion.apr.model.AM.client.AttributeGroup_AMClient">
+  <DesignTime>
+    <Attr Name="_deployType" Value="0"/>
+    <Attr Name="_isDefCodegen" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="fusion.apr.model.AM.AttributeGroup_AM_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="AttributeGroup_ROVO1"
+    ViewObjectName="fusion.apr.model.ROVO.AttributeGroup_ROVO"/>
+  <ViewUsage
+    Name="ApprAttrGroup_VO1"
+    ViewObjectName="fusion.apr.model.VO.ApprAttrGroup_VO">
+    <ViewCriteriaUsage
+      Name="FindById"
+      FullName="fusion.apr.model.VO.ApprAttrGroup_VO.FindById"/>
+    <ParameterMap>
+      <PIMap Variable="BV_ID">
+        <TransientExpression><![CDATA[adf.context.pageFlowScope.aid]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewUsage>
+  <ViewUsage
+    Name="ApprAttributes_VO1"
+    ViewObjectName="fusion.apr.model.VO.ApprAttributes_VO"/>
+  <ViewUsage
+    Name="ApprAttrComb_VO1"
+    ViewObjectName="fusion.apr.model.VO.ApprAttrComb_VO"/>
+  <ViewLinkUsage
+    Name="AttrGroup_VL1"
+    ViewLinkObjectName="fusion.apr.model.VL.AttrGroup_VL"
+    SrcViewUsageName="fusion.apr.model.AM.AttributeGroup_AM.ApprAttrGroup_VO1"
+    DstViewUsageName="fusion.apr.model.AM.AttributeGroup_AM.ApprAttributes_VO1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="AttrComb_VL1"
+    ViewLinkObjectName="fusion.apr.model.VL.AttrComb_VL"
+    SrcViewUsageName="fusion.apr.model.AM.AttributeGroup_AM.ApprAttrGroup_VO1"
+    DstViewUsageName="fusion.apr.model.AM.AttributeGroup_AM.ApprAttrComb_VO1"
+    Reversed="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.FunctionApprovalsModelBundle"/>
+  </ResourceBundle>
+  <ClientInterface>
+    <Method
+      Name="RefreshAttributes">
+      <Return
+        Type="void"/>
+    </Method>
+    <Method
+      Name="createGroup">
+      <Return
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+</AppModule>

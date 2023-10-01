@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="AttributeGroup_BTF">
+    <default-activity id="__1">SearchAttribute</default-activity>
+    <transaction id="__13">
+      <requires-transaction/>
+    </transaction>
+    <managed-bean id="__4">
+      <managed-bean-name id="__2">backing_fragment_SearchAttribute</managed-bean-name>
+      <managed-bean-class id="__5">fusion.apr.view.backing.SearchAttribute</managed-bean-class>
+      <managed-bean-scope id="__3">backingBean</managed-bean-scope>
+      <!--oracle-jdev-comment:managed-bean-jsp-link:1fragment/SearchAttribute.jsff-->
+    </managed-bean>
+    <managed-bean id="__8">
+      <managed-bean-name id="__7">backing_taskflow_AddEditAttribute</managed-bean-name>
+      <managed-bean-class id="__9">fusion.apr.view.backing.AddEditAttribute</managed-bean-class>
+      <managed-bean-scope id="__6">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="SearchAttribute">
+      <page>/fragment/SearchAttribute.jsff</page>
+    </view>
+    <view id="AddEditAttribute">
+      <page>/fragment/AddEditAttribute.jsff</page>
+    </view>
+    <method-call id="Execute">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome id="__21">
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__32">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="RefreshAttributes">
+      <method>#{bindings.RefreshAttributes.execute}</method>
+      <outcome id="__68">
+        <fixed-outcome>RefreshAttributes</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="createGroup">
+      <method>#{bindings.createGroup.execute}</method>
+      <outcome id="__10">
+        <fixed-outcome>createGroup</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__22">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__11">
+      <from-activity-id id="__12">SearchAttribute</from-activity-id>
+      <control-flow-case id="__33">
+        <from-outcome id="__35">edit</from-outcome>
+        <to-activity-id id="__34">ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__24">
+        <from-outcome id="__25">add</from-outcome>
+        <to-activity-id id="__23">CreateInsert</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__27">
+      <from-activity-id id="__28">Execute</from-activity-id>
+      <control-flow-case id="__31">
+        <from-outcome id="__30">Execute</from-outcome>
+        <to-activity-id id="__29">SearchAttribute</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__36">
+      <from-activity-id id="__37">AddEditAttribute</from-activity-id>
+      <control-flow-case id="__38">
+        <from-outcome id="__40">back</from-outcome>
+        <to-activity-id id="__39">Execute</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__69">
+      <from-activity-id id="__70">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__72">
+        <from-outcome id="__73">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__71">RefreshAttributes</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__74">
+      <from-activity-id id="__75">RefreshAttributes</from-activity-id>
+      <control-flow-case id="__77">
+        <from-outcome id="__76">RefreshAttributes</from-outcome>
+        <to-activity-id id="__78">AddEditAttribute</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__16">
+      <from-activity-id id="__17">createGroup</from-activity-id>
+      <control-flow-case id="__19">
+        <from-outcome id="__20">createGroup</from-outcome>
+        <to-activity-id id="__18">AddEditAttribute</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__26">
+      <from-activity-id id="__41">CreateInsert</from-activity-id>
+      <control-flow-case id="__44">
+        <from-outcome id="__43">CreateInsert</from-outcome>
+        <to-activity-id id="__42">createGroup</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

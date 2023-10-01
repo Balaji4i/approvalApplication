@@ -1,0 +1,45 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="fusion.apr.model.AM.UserGroup_AM">
+      <!-- <AppModuleConfig name="User_AMLocal" ApplicationName="fusion.apr.model.AM.User_AM" DeployPlatform="LOCAL" jbo.project="model.FunctionApprovalsModel">
+         <Security AppModuleJndiName="fusion.apr.model.AM.UserGroup_AM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/SubcontDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="User_AMShared" ApplicationName="fusion.apr.model.AM.User_AM" DeployPlatform="LOCAL" jbo.project="model.FunctionApprovalsModel">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Security AppModuleJndiName="fusion.apr.model.AM.UserGroup_AM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/SubcontDS"/>
+      </AppModuleConfig>-->
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.FunctionApprovalsModel" name="UserGroup_AMLocal" ApplicationName="fusion.apr.model.AM.UserGroup_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <Security AppModuleJndiName="fusion.apr.model.AM.UserGroup_AM"/>
+         <Custom JDBCDataSource="otl"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.FunctionApprovalsModel" name="UserGroup_AMShared" ApplicationName="fusion.apr.model.AM.UserGroup_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Security AppModuleJndiName="fusion.apr.model.AM.UserGroup_AM"/>
+         <Custom JDBCDataSource="otl"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="fusion.apr.model.AM.AttributeGroup_AM">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.FunctionApprovalsModel" name="AttributeGroup_AMLocal" ApplicationName="fusion.apr.model.AM.AttributeGroup_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <Security AppModuleJndiName="fusion.apr.model.AM.AttributeGroup_AM"/>
+         <Custom JDBCDataSource="otl"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.FunctionApprovalsModel" name="AttributeGroup_AMShared" ApplicationName="fusion.apr.model.AM.AttributeGroup_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Security AppModuleJndiName="fusion.apr.model.AM.AttributeGroup_AM"/>
+         <Custom JDBCDataSource="otl"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="fusion.apr.model.AM.Functions_AM">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.FunctionApprovalsModel" name="Functions_AMLocal" ApplicationName="fusion.apr.model.AM.Functions_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <Security AppModuleJndiName="fusion.apr.model.AM.Functions_AM"/>
+         <Custom JDBCDataSource="otl"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.FunctionApprovalsModel" name="Functions_AMShared" ApplicationName="fusion.apr.model.AM.Functions_AM" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Security AppModuleJndiName="fusion.apr.model.AM.Functions_AM"/>
+         <Custom JDBCDataSource="otl"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document title="Approvals" id="d1"
+                 binding="#{backingBeanScope.HomeClass.d1}">
+      <af:form id="f1" binding="#{backingBeanScope.HomeClass.f1}">
+       <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                         id="pt1"
+                         binding="#{backingBeanScope.HomeClass.pt1}">
+          <f:facet name="pageContents">
+                  <af:panelStretchLayout binding="#{backingBeanScope.HomeClass.psl1}"
+                                         id="psl1"
+                                         inlineStyle="height:3000.0px;"
+                                         styleClass="AFStretchWidth">
+                     <f:facet name="center">
+                        <af:panelSplitter binding="#{backingBeanScope.HomeClass.ps1}"
+                                          id="ps1" styleClass="AFStretchWidth"
+                                          splitterPosition="155">
+                           <f:facet name="first">
+                              <af:panelAccordion discloseMany="false"
+                                                 binding="#{backingBeanScope.HomeClass.pa1}"
+                                                 id="pa1">
+                                 <af:showDetailItem id="pane1" text="Approval"
+                                                    binding="#{backingBeanScope.HomeClass.pane1}">
+                                    <af:commandImageLink text="User Group"
+                                                         binding="#{backingBeanScope.HomeClass.cil1}"
+                                                         id="cil1">
+                                       <af:setPropertyListener from="#{'/taskflow/UserGroup_BTF.xml#UserGroup_BTF'}"
+                                                               to="#{pageFlowScope.taskid}"
+                                                               type="action"/>
+                                    </af:commandImageLink>
+                                    <af:commandImageLink text="Attribute Group"
+                                                         binding="#{backingBeanScope.HomeClass.cil2}"
+                                                         id="cil2">
+                                       <af:setPropertyListener from="#{'/taskflow/AttributeGroup_BTF.xml#AttributeGroup_BTF'}"
+                                                               to="#{pageFlowScope.taskid}"
+                                                               type="action"/>
+                                    </af:commandImageLink>
+                                 </af:showDetailItem>
+                              </af:panelAccordion>
+                           </f:facet>
+                           <f:facet name="second">
+                              <af:region value="#{bindings.dynamicRegion1.regionModel}"
+                                         id="r1"
+                                         binding="#{backingBeanScope.HomeClass.r1}"/>
+                           </f:facet>
+                        </af:panelSplitter>
+                     </f:facet>
+                  </af:panelStretchLayout>
+               </f:facet>
+          <f:facet name="footerStart"/>
+          <f:facet name="footer"/>
+          <f:facet name="footerEnd"/>
+          <f:facet name="headerStart"/>
+          <f:facet name="header"/>
+          <f:facet name="headerEnd"/>
+        </af:pageTemplate>
+     </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:HomeClass-->
+</jsp:root>

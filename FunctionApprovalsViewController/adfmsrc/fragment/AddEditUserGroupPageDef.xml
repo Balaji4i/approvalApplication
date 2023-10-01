@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="AddEditUserGroupPageDef"
+                Package="fragment">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ApprUserGroup_VO1" RangeSize="25"
+              DataControl="UserGroup_AMDataControl"
+              id="ApprUserGroup_VO1Iterator"/>
+    <iterator Binds="ApprUserLevels_VO1" RangeSize="25"
+              DataControl="UserGroup_AMDataControl"
+              id="ApprUserLevels_VO1Iterator"/>
+    <iterator Binds="ApprUsers_VO1" RangeSize="25"
+              DataControl="UserGroup_AMDataControl" id="ApprUsers_VO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="ApprUserGroup_VO1Iterator" id="UserGrpName">
+      <AttrNames>
+        <Item Value="UserGrpName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApprUserGroup_VO1Iterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="ApprUserLevels_VO1Iterator" id="ApprUserLevels_VO1">
+      <nodeDefinition DefName="fusion.apr.model.VO.ApprUserLevels_VO"
+                      Name="ApprUserLevels_VO10">
+        <AttrNames>
+          <Item Value="LevelNo"/>
+          <Item Value="LevelName"/>
+          <Item Value="LevelType"/>
+          <Item Value="Trns_Active_2" Binds="Trns_Active_2"/>
+          <Item Value="Trns_Active" Binds="Trns_Active"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="ApprUserLevels_VO1Iterator" id="Trns_Active_2"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Trns_Active_2"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <button IterBinding="ApprUserLevels_VO1Iterator" id="Trns_Active"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Trns_Active"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <tree IterBinding="ApprUsers_VO1Iterator" id="ApprUsers_VO1">
+      <nodeDefinition DefName="fusion.apr.model.VO.ApprUsers_VO"
+                      Name="ApprUsers_VO10">
+        <AttrNames>
+          <Item Value="SeqNumber"/>
+          <Item Value="UserId"/>
+          <Item Value="ApprRole"/>
+          <Item Value="ApprRoleDesc"/>
+          <Item Value="EmpId"/>
+          <Item Value="ApprLimit"/>
+          <Item Value="Trns_Active_1" Binds="Trns_Active_1"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="ApprUserGroup_VO1Iterator" id="ActiveYn"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="ActiveYn"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <button IterBinding="ApprUsers_VO1Iterator" id="Trns_Active_1"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Trns_Active_1"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <action IterBinding="ApprUserLevels_VO1Iterator" id="CreateInsert"
+            InstanceName="UserGroup_AMDataControl.ApprUserLevels_VO1"
+            DataControl="UserGroup_AMDataControl" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="ApprUsers_VO1Iterator" id="CreateInsert1"
+            InstanceName="UserGroup_AMDataControl.ApprUsers_VO1"
+            DataControl="UserGroup_AMDataControl" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action id="Commit" DataControl="UserGroup_AMDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="UserGroup_AMDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <action IterBinding="ApprUserLevels_VO1Iterator" id="Delete"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="ApprUsers_VO1Iterator" id="Delete1"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+  </bindings>
+</pageDefinition>

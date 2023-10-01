@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ApprUsers_VO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  SelectList="ApprUsers_EO.APPR_USER_ID, 
+       ApprUsers_EO.USER_LEVEL_ID, 
+       ApprUsers_EO.SEQ_NUMBER, 
+       ApprUsers_EO.USER_ID, 
+       ApprUsers_EO.APPR_ROLE, 
+       ApprUsers_EO.APPR_ROLE_DESC, 
+       ApprUsers_EO.EMP_ID, 
+       ApprUsers_EO.APPR_LIMIT, 
+       ApprUsers_EO.ACTIVE_YN, 
+       ApprUsers_EO.CREATED_BY, 
+       ApprUsers_EO.CREATION_DATE, 
+       ApprUsers_EO.LAST_UPDATED_BY, 
+       ApprUsers_EO.LAST_UPDATE_DATE, 
+       ApprUsers_EO.LAST_UPDATE_LOGIN"
+  FromList="XXFND_APPR_USERS ApprUsers_EO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  RowClass="fusion.apr.model.VO.ApprUsers_VORowImpl"
+  ComponentClass="fusion.apr.model.VO.ApprUsers_VOImpl"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="UserName_ROVO1"
+    ViewObjectName="fusion.apr.model.ROVO.UserName_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="EmployeeName_ROVO1"
+    ViewObjectName="fusion.apr.model.ROVO.EmployeeName_ROVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_UserId"
+    ListVOName="UserName_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="UserId"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="EmpId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="UserId"/>
+      <Item Value="EmpId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="UserName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_EmpId"
+    ListVOName="EmployeeName_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="EmpId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="EmpId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="EmployeeName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="ApprUsers_EO"
+    Entity="fusion.apr.model.EO.ApprUsers_EO"/>
+  <ViewAttribute
+    Name="ApprUserId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ApprUserId"
+    EntityUsage="ApprUsers_EO"
+    AliasName="APPR_USER_ID">
+    <TransientExpression><![CDATA[(new oracle.jbo.server.SequenceImpl("xxfnd_appr_user_id_s",adf.object.getDBTransaction())).getSequenceNumber()]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UserLevelId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="UserLevelId"
+    EntityUsage="ApprUsers_EO"
+    AliasName="USER_LEVEL_ID"/>
+  <ViewAttribute
+    Name="SeqNumber"
+    PrecisionRule="true"
+    EntityAttrName="SeqNumber"
+    EntityUsage="ApprUsers_EO"
+    AliasName="SEQ_NUMBER"/>
+  <ViewAttribute
+    Name="UserId"
+    LOVName="LOV_UserId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="UserId"
+    EntityUsage="ApprUsers_EO"
+    AliasName="USER_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ApprRole"
+    PrecisionRule="true"
+    EntityAttrName="ApprRole"
+    EntityUsage="ApprUsers_EO"
+    AliasName="APPR_ROLE"/>
+  <ViewAttribute
+    Name="ApprRoleDesc"
+    PrecisionRule="true"
+    EntityAttrName="ApprRoleDesc"
+    EntityUsage="ApprUsers_EO"
+    AliasName="APPR_ROLE_DESC"/>
+  <ViewAttribute
+    Name="EmpId"
+    LOVName="LOV_EmpId"
+    PrecisionRule="true"
+    EntityAttrName="EmpId"
+    EntityUsage="ApprUsers_EO"
+    AliasName="EMP_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ApprLimit"
+    PrecisionRule="true"
+    EntityAttrName="ApprLimit"
+    EntityUsage="ApprUsers_EO"
+    AliasName="APPR_LIMIT"/>
+  <ViewAttribute
+    Name="ActiveYn"
+    PrecisionRule="true"
+    DefaultValue="Y"
+    EntityAttrName="ActiveYn"
+    EntityUsage="ApprUsers_EO"
+    AliasName="ACTIVE_YN"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="ApprUsers_EO"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="CreationDate"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="ApprUsers_EO"
+    AliasName="CREATION_DATE"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="ApprUsers_EO"
+    AliasName="LAST_UPDATED_BY"/>
+  <ViewAttribute
+    Name="LastUpdateDate"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateDate"
+    EntityUsage="ApprUsers_EO"
+    AliasName="LAST_UPDATE_DATE"/>
+  <ViewAttribute
+    Name="LastUpdateLogin"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateLogin"
+    EntityUsage="ApprUsers_EO"
+    AliasName="LAST_UPDATE_LOGIN"/>
+  <ViewAttribute
+    Name="Trns_Active_1"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Boolean"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="BIT"/>
+</ViewObject>

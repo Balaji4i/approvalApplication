@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageContents">
+      <af:panelGroupLayout binding="#{backingBeanScope.backing_fragment_SearchAttribute.pgl1}"
+                           id="pgl1">
+        <af:panelGridLayout binding="#{backingBeanScope.backing_fragment_SearchAttribute.pgl2}"
+                            id="pgl2">
+          <af:gridRow marginTop="5px" height="auto" marginBottom="5px"
+                      binding="#{backingBeanScope.backing_fragment_SearchAttribute.gr1}"
+                      id="gr1">
+            <af:gridCell marginStart="5px" width="50%"
+                         binding="#{backingBeanScope.backing_fragment_SearchAttribute.gc1}"
+                         id="gc1" marginEnd="5px">
+              <af:outputLabel value="Attribute Group"
+                              binding="#{backingBeanScope.backing_fragment_SearchAttribute.ol1}"
+                              id="ol1"
+                              inlineStyle="font-weight:bolder; font-size:large;"/>
+            </af:gridCell>
+            <af:gridCell marginStart="5px" width="50%" marginEnd="5px"
+                         binding="#{backingBeanScope.backing_fragment_SearchAttribute.gc2}"
+                         id="gc2"/>
+          </af:gridRow>
+        </af:panelGridLayout>
+        <af:query id="qryId1" headerText="Search" disclosed="true"
+                  value="#{bindings.SearchAtrGroupQuery.queryDescriptor}"
+                  model="#{bindings.SearchAtrGroupQuery.queryModel}"
+                  queryListener="#{bindings.SearchAtrGroupQuery.processQuery}"
+                  queryOperationListener="#{bindings.SearchAtrGroupQuery.processQueryOperation}"
+                  resultComponentId="::pc1:resId1"
+                  binding="#{backingBeanScope.backing_fragment_SearchAttribute.qryId1}"/>
+        <af:spacer width="10" height="10"
+                   binding="#{backingBeanScope.backing_fragment_SearchAttribute.s1}"
+                   id="s1"/>
+        <af:panelBox text="Search Result"
+                     binding="#{backingBeanScope.backing_fragment_SearchAttribute.pb1}"
+                     id="pb1">
+          <f:facet name="toolbar"/>
+          <af:panelCollection binding="#{backingBeanScope.backing_fragment_SearchAttribute.pc1}"
+                              id="pc1" styleClass="AFStretchWidth">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar">
+              <af:toolbar binding="#{backingBeanScope.backing_fragment_SearchAttribute.t1}"
+                          id="t1" flex="1">
+                <af:commandImageLink
+                                     binding="#{backingBeanScope.backing_fragment_SearchAttribute.cil1}"
+                                     id="cil1" icon="/image/add.png"
+                                     hoverIcon="/image/add_en.png"
+                                     action="add"/>
+                <af:spacer width="10" height="10"
+                           binding="#{backingBeanScope.backing_fragment_SearchAttribute.s2}"
+                           id="s2"/>
+                <af:commandImageLink
+                                     binding="#{backingBeanScope.backing_fragment_SearchAttribute.cil2}"
+                                     id="cil2" icon="/image/edit.png"
+                                     hoverIcon="/image/edit_en.png"
+                                     action="edit">
+                  <af:setPropertyListener from="#{bindings.AttrGrpId.inputValue}"
+                                          to="#{pageFlowScope.aid}" type="action"/>
+                </af:commandImageLink>
+              </af:toolbar>
+            </f:facet>
+            <f:facet name="statusbar"/>
+            <af:table value="#{bindings.AttributeGroup_ROVO1.collectionModel}"
+                      var="row"
+                      rows="#{bindings.AttributeGroup_ROVO1.rangeSize}"
+                      emptyText="#{bindings.AttributeGroup_ROVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="#{bindings.AttributeGroup_ROVO1.rangeSize}"
+                      rowBandingInterval="0"
+                      selectedRowKeys="#{bindings.AttributeGroup_ROVO1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.AttributeGroup_ROVO1.collectionModel.makeCurrent}"
+                      rowSelection="single" id="resId1"
+                      binding="#{backingBeanScope.backing_fragment_SearchAttribute.resId1}">
+              <af:column sortProperty="#{bindings.AttributeGroup_ROVO1.hints.AttrGrpName.name}"
+                         sortable="false"
+                         headerText="#{bindings.AttributeGroup_ROVO1.hints.AttrGrpName.label}"
+                         id="resId1c1" width="180">
+                <af:outputText value="#{row.AttrGrpName}" id="ot2"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.AttributeGroup_ROVO1.hints.Description.name}"
+                         sortable="false"
+                         headerText="#{bindings.AttributeGroup_ROVO1.hints.Description.label}"
+                         id="resId1c2" width="180">
+                <af:outputText value="#{row.Description}" id="ot3"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.AttributeGroup_ROVO1.hints.ActiveYn.name}"
+                         sortable="false"
+                         headerText="Active ?"
+                         id="resId1c3" width="80">
+                <af:image source="/image/Ok_icon.png" id="i1"
+                          rendered="#{row.ActiveYn eq 'Y'}"/>
+                <af:image source="/image/Cancel.png" id="i2"
+                          rendered="#{row.ActiveYn eq 'N'}"/>
+              </af:column>
+            </af:table>
+          </af:panelCollection>
+        </af:panelBox>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="footerStart"/>
+    <f:facet name="footer"/>
+    <f:facet name="footerEnd"/>
+    <f:facet name="headerStart"/>
+    <f:facet name="header"/>
+    <f:facet name="headerEnd"/>
+  </af:pageTemplate>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_fragment_SearchAttribute-->
+</jsp:root>

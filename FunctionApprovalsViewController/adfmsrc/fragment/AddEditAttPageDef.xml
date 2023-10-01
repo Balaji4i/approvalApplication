@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="AddEditAttPageDef"
+                Package="fragment">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ApprAttrGroup_VO1" RangeSize="25"
+              DataControl="AttributeGroup_AMDataControl"
+              id="ApprAttrGroup_VO1Iterator"/>
+    <iterator id="ApprAttributes_VO1Iterator" Binds="ApprAttributes_VO1"
+              DataControl="AttributeGroup_AMDataControl" RangeSize="25"/>
+    <iterator id="ApprAttrComb_VO1Iterator" Binds="ApprAttrComb_VO1"
+              DataControl="AttributeGroup_AMDataControl" RangeSize="25"/>
+    <searchRegion Binds="ApprAttributes_VO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ApprAttributes_VO1Query"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="ApprAttrGroup_VO1Iterator" id="AttrGrpName">
+      <AttrNames>
+        <Item Value="AttrGrpName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApprAttrGroup_VO1Iterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="AttributeGroup_AMDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="AttributeGroup_AMDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <action IterBinding="ApprAttrGroup_VO1Iterator" id="CreateInsert"
+            InstanceName="AttributeGroup_AMDataControl.ApprAttrGroup_VO1"
+            DataControl="AttributeGroup_AMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="ApprAttributes_VO1Iterator" id="CreateInsert3"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="ApprAttrComb_VO1Iterator" id="CreateInsert1"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <tree IterBinding="ApprAttributes_VO1Iterator" id="ApprAttributes_VO1">
+      <nodeDefinition DefName="fusion.apr.model.VO.ApprAttributes_VO"
+                      Name="ApprAttributes_VO10">
+        <AttrNames>
+          <Item Value="SeqNumber"/>
+          <Item Value="AttributeColumn"/>
+          <Item Value="ColumnName"/>
+          <Item Value="SrcTable"/>
+          <Item Value="SrcColumn"/>
+          <Item Value="SrcDispColumn"/>
+          <Item Value="SrcLookupType"/>
+          <Item Value="ActiveYn"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

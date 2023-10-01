@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="UserGroup_AM"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true">
+  <DesignTime>
+    <Attr Name="_deployType" Value="0"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="fusion.apr.model.AM.UserGroup_AM_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="ApprUserGroup_VO1"
+    ViewObjectName="fusion.apr.model.VO.ApprUserGroup_VO">
+    <ViewCriteriaUsage
+      Name="FindByGrpID"
+      FullName="fusion.apr.model.VO.ApprUserGroup_VO.FindByGrpID"/>
+    <ParameterMap>
+      <PIMap Variable="BV_GID">
+        <TransientExpression><![CDATA[adf.context.pageFlowScope.gid]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewUsage>
+  <ViewUsage
+    Name="ApprUserLevels_VO1"
+    ViewObjectName="fusion.apr.model.VO.ApprUserLevels_VO"/>
+  <ViewUsage
+    Name="ApprUsers_VO1"
+    ViewObjectName="fusion.apr.model.VO.ApprUsers_VO"/>
+  <ViewUsage
+    Name="UserGroup_ROVO1"
+    ViewObjectName="fusion.apr.model.ROVO.UserGroup_ROVO"/>
+  <ViewLinkUsage
+    Name="UserGroupLevel_VL1"
+    ViewLinkObjectName="fusion.apr.model.VL.UserGroupLevel_VL"
+    SrcViewUsageName="fusion.apr.model.AM.UserGroup_AM.ApprUserGroup_VO1"
+    DstViewUsageName="fusion.apr.model.AM.UserGroup_AM.ApprUserLevels_VO1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="UserLevel_VL1"
+    ViewLinkObjectName="fusion.apr.model.VL.UserLevel_VL"
+    SrcViewUsageName="fusion.apr.model.AM.UserGroup_AM.ApprUserLevels_VO1"
+    DstViewUsageName="fusion.apr.model.AM.UserGroup_AM.ApprUsers_VO1"
+    Reversed="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.FunctionApprovalsModelBundle"/>
+  </ResourceBundle>
+</AppModule>

@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageContents">
+      <af:panelGroupLayout binding="#{backingBeanScope.backing_fragment_SearchUserGroup.pgl1}"
+                           id="pgl1">
+        <af:panelGridLayout binding="#{backingBeanScope.backing_fragment_SearchUserGroup.pgl2}"
+                            id="pgl2">
+          <af:gridRow marginTop="5px" height="auto" marginBottom="5px"
+                      binding="#{backingBeanScope.backing_fragment_SearchUserGroup.gr1}"
+                      id="gr1">
+            <af:gridCell marginStart="5px" width="50%"
+                         binding="#{backingBeanScope.backing_fragment_SearchUserGroup.gc1}"
+                         id="gc1">
+              <af:outputLabel value="User Group"
+                              binding="#{backingBeanScope.backing_fragment_SearchUserGroup.ol1}"
+                              id="ol1"
+                              inlineStyle="font-weight:bolder; font-size:large;"/>
+            </af:gridCell>
+            <af:gridCell marginStart="5px" width="50%" marginEnd="5px"
+                         binding="#{backingBeanScope.backing_fragment_SearchUserGroup.gc2}"
+                         id="gc2"/>
+          </af:gridRow>
+        </af:panelGridLayout>
+        <af:query id="qryId1" headerText="Search" disclosed="true"
+                  value="#{bindings.SearchUserGroupQuery.queryDescriptor}"
+                  model="#{bindings.SearchUserGroupQuery.queryModel}"
+                  queryListener="#{bindings.SearchUserGroupQuery.processQuery}"
+                  queryOperationListener="#{bindings.SearchUserGroupQuery.processQueryOperation}"
+                  resultComponentId="::pc1:resId1"
+                  binding="#{backingBeanScope.backing_fragment_SearchUserGroup.qryId1}"/>
+        <af:spacer width="10" height="10"
+                   binding="#{backingBeanScope.backing_fragment_SearchUserGroup.s1}"
+                   id="s1"/>
+        <af:panelBox text="Search Result"
+                     binding="#{backingBeanScope.backing_fragment_SearchUserGroup.pb1}"
+                     id="pb1">
+          <f:facet name="toolbar"/>
+          <af:panelCollection binding="#{backingBeanScope.backing_fragment_SearchUserGroup.pc1}"
+                              id="pc1" styleClass="AFStretchWidth">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar">
+              <af:toolbar binding="#{backingBeanScope.backing_fragment_SearchUserGroup.t1}"
+                          id="t1" flex="0">
+                <af:commandImageLink
+                                     binding="#{backingBeanScope.backing_fragment_SearchUserGroup.cil1}"
+                                     id="cil1" icon="/image/add.png"
+                                     hoverIcon="/image/add_en.png"
+                                     action="add"/>
+                <af:spacer width="10" height="10"
+                           binding="#{backingBeanScope.backing_fragment_SearchUserGroup.s2}"
+                           id="s2"/>
+                <af:commandImageLink
+                                     binding="#{backingBeanScope.backing_fragment_SearchUserGroup.cil2}"
+                                     id="cil2" icon="/image/edit.png"
+                                     hoverIcon="/image/edit_en.png"
+                                     action="edit">
+                  <af:setPropertyListener to="#{pageFlowScope.gid}"
+                                          from="#{bindings.UserGrpId.inputValue}"
+                                          type="action"/>
+                </af:commandImageLink>
+              </af:toolbar>
+            </f:facet>
+            <f:facet name="statusbar"/>
+            <af:table value="#{bindings.UserGroup_ROVO1.collectionModel}"
+                      var="row" rows="#{bindings.UserGroup_ROVO1.rangeSize}"
+                      emptyText="#{bindings.UserGroup_ROVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="#{bindings.UserGroup_ROVO1.rangeSize}"
+                      rowBandingInterval="0"
+                      selectedRowKeys="#{bindings.UserGroup_ROVO1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.UserGroup_ROVO1.collectionModel.makeCurrent}"
+                      rowSelection="single" id="resId1"
+                      binding="#{backingBeanScope.backing_fragment_SearchUserGroup.resId1}"
+                      columnSelection="single"
+                      filterModel="#{bindings.SearchUserGroupQuery.queryDescriptor}"
+                      queryListener="#{bindings.SearchUserGroupQuery.processQuery}"
+                      filterVisible="true" varStatus="vs">
+              <af:column sortProperty="#{bindings.UserGroup_ROVO1.hints.UserGrpName.name}"
+                         sortable="true" headerText="User Group" id="resId1c1"
+                         width="180" filterable="true">
+                <af:outputText value="#{row.UserGrpName}" id="ot1"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.UserGroup_ROVO1.hints.Description.name}"
+                         sortable="true" headerText="Description" id="resId1c2"
+                         width="180" filterable="true">
+                <af:outputText value="#{row.Description}" id="ot2"/>
+              </af:column>
+              <af:column headerText="Active"
+                         id="c1" width="80">
+                <af:outputText value="#{row.ActiveYn}" id="ot3"
+                               rendered="false"/>
+                <af:image source="/image/Ok_icon.png" id="i1"
+                          rendered="#{row.ActiveYn eq 'Y'}"/>
+                <af:image source="/image/Cancel.png" id="i2"
+                          rendered="#{row.ActiveYn eq 'N'}"/>
+              </af:column>
+            </af:table>
+          </af:panelCollection>
+        </af:panelBox>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="footerStart"/>
+    <f:facet name="footer"/>
+    <f:facet name="footerEnd"/>
+    <f:facet name="headerStart"/>
+    <f:facet name="header"/>
+    <f:facet name="headerEnd"/>
+  </af:pageTemplate>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_fragment_SearchUserGroup-->
+</jsp:root>

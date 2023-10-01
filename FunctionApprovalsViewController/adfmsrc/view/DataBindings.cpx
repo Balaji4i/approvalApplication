@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.66.73" id="DataBindings" SeparateXMLFiles="false"
+             Package="view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/fragment/SearchUserGroup.jsff"
+          usageId="view_SearchUserGroupPageDef"/>
+    <page path="/taskflow/UserGroup_BTF.xml#UserGroup_BTF@CreateInsert"
+          usageId="view_UserGroup_BTF_UserGroup_BTF_CreateInsertPageDef"/>
+    <page path="/taskflow/UserGroup_BTF.xml#UserGroup_BTF@Execute"
+          usageId="view_UserGroup_BTF_UserGroup_BTF_ExecutePageDef"/>
+    <page path="/fragment/AddEditUserGroup.jsff"
+          usageId="view_AddEditUserGroupPageDef"/>
+    <page path="/taskflow/UserGroup_BTF.xml#UserGroup_BTF@ExecuteWithParams"
+          usageId="view_UserGroup_BTF_UserGroup_BTF_ExecuteWithParamsPageDef"/>
+    <page path="/pages/Home.jspx" usageId="view_HomePageDef"/>
+    <page path="/fragment/SearchAttribute.jsff"
+          usageId="view_SearchAttributePageDef"/>
+    <page path="/taskflow/AttributeGroup_BTF.xml#AttributeGroup_BTF@Execute"
+          usageId="view_AttributeGroup_BTF_AttributeGroup_BTF_ExecutePageDef"/>
+    <page path="/fragment/AddEditAttribute.jsff"
+          usageId="view_AddEditAttributePageDef"/>
+    <page path="/taskflow/AttributeGroup_BTF.xml#AttributeGroup_BTF@ExecuteWithParams"
+          usageId="view_AttributeGroup_BTF_AttributeGroup_BTF_ExecuteWithParamsPageDef"/>
+    <page path="/taskflow/AttributeGroup_BTF.xml#AttributeGroup_BTF@RefreshAttributes"
+          usageId="view_AttributeGroup_BTF_AttributeGroup_BTF_RefreshAttributesPageDef"/>
+    <page path="/taskflow/AttributeGroup_BTF.xml#AttributeGroup_BTF@createGroup"
+          usageId="view_AttributeGroup_BTF_AttributeGroup_BTF_createGroupPageDef"/>
+    <page path="/taskflow/AttributeGroup_BTF.xml#AttributeGroup_BTF@CreateInsert"
+          usageId="view_AttributeGroup_BTF_AttributeGroup_BTF_CreateInsertPageDef"/>
+    <page path="/pages/Home1.jspx" usageId="view_Home1PageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="view_SearchUserGroupPageDef"
+          path="fragment.SearchUserGroupPageDef"/>
+    <page id="view_UserGroup_BTF_UserGroup_BTF_CreateInsertPageDef"
+          path="taskflow.UserGroup_BTF_UserGroup_BTF_CreateInsertPageDef"/>
+    <page id="view_UserGroup_BTF_UserGroup_BTF_ExecutePageDef"
+          path="taskflow.UserGroup_BTF_UserGroup_BTF_ExecutePageDef"/>
+    <page id="view_AddEditUserGroupPageDef"
+          path="fragment.AddEditUserGroupPageDef"/>
+    <page id="view_UserGroup_BTF_UserGroup_BTF_ExecuteWithParamsPageDef"
+          path="taskflow.UserGroup_BTF_UserGroup_BTF_ExecuteWithParamsPageDef"/>
+    <page id="view_HomePageDef" path="pages.HomePageDef"/>
+    <page id="view_SearchAttributePageDef"
+          path="fragment.SearchAttributePageDef"/>
+    <page id="view_AttributeGroup_BTF_AttributeGroup_BTF_ExecutePageDef"
+          path="taskflow.AttributeGroup_BTF_AttributeGroup_BTF_ExecutePageDef"/>
+    <page id="view_AddEditAttributePageDef"
+          path="fragment.AddEditAttributePageDef"/>
+    <page id="view_AttributeGroup_BTF_AttributeGroup_BTF_ExecuteWithParamsPageDef"
+          path="taskflow.AttributeGroup_BTF_AttributeGroup_BTF_ExecuteWithParamsPageDef"/>
+    <page id="view_AddEditAttPageDef" path="fragment.AddEditAttPageDef"/>
+    <page id="view_AttributeGroup_BTF_AttributeGroup_BTF_RefreshAttributesPageDef"
+          path="taskflow.AttributeGroup_BTF_AttributeGroup_BTF_RefreshAttributesPageDef"/>
+    <page id="view_AttributeGroup_BTF_AttributeGroup_BTF_createGroupPageDef"
+          path="taskflow.AttributeGroup_BTF_AttributeGroup_BTF_createGroupPageDef"/>
+    <page id="view_AttributeGroup_BTF_AttributeGroup_BTF_CreateInsertPageDef"
+          path="taskflow.AttributeGroup_BTF_AttributeGroup_BTF_CreateInsertPageDef"/>
+    <page id="view_Home1PageDef" path="pages.Home1PageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="UserGroup_AMDataControl" Package="fusion.apr.model.AM"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="UserGroup_AMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="AttributeGroup_AMDataControl"
+                     Package="fusion.apr.model.AM"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="AttributeGroup_AMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="Functions_AMDataControl" Package="fusion.apr.model.AM"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="Functions_AMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

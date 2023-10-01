@@ -1,0 +1,432 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx"
+                   id="pt1"
+                   binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.pt1}">
+    <f:facet name="pageContents">
+      <af:panelGroupLayout id="pgl1">
+        <af:panelGroupLayout id="pgl2">
+          <af:panelGridLayout id="pgl3">
+            <af:gridRow marginTop="5px" height="auto" marginBottom="5px"
+                        id="gr1">
+              <af:gridCell marginStart="5px" width="50%" id="gc2"
+                           marginEnd="5px">
+                <af:outputLabel value="Attribute Group" id="ol1"
+                                inlineStyle="font-weight:bolder; font-size:large;"/>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="50%" marginEnd="5px"
+                           id="gc1" halign="end">
+                <af:commandButton text="Save" id="cb1" action="back"
+                                  actionListener="#{backingBeanScope.backing_taskflow_AddEditAttribute.onClickCommit}"/>
+                <af:spacer width="10" height="10" id="s1"/>
+                <af:commandButton text="Cancel" id="cb2"
+                                  actionListener="#{backingBeanScope.backing_taskflow_AddEditAttribute.onClickRollback}"
+                                  action="back" immediate="true"/>
+              </af:gridCell>
+            </af:gridRow>
+          </af:panelGridLayout>
+          <af:panelFormLayout binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.pfl1}"
+                              id="pfl1"
+                              inlineStyle="padding-left:500px; height:120px;">
+            <af:inputText value="#{bindings.AttrGrpName.inputValue}"
+                          label="Group Name"
+                          required="#{bindings.AttrGrpName.hints.mandatory}"
+                          columns="#{bindings.AttrGrpName.hints.displayWidth}"
+                          maximumLength="#{bindings.AttrGrpName.hints.precision}"
+                          shortDesc="#{bindings.AttrGrpName.hints.tooltip}"
+                          binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.it1}"
+                          id="it1">
+              <f:validator binding="#{bindings.AttrGrpName.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.Description.inputValue}"
+                          label="Description"
+                          required="#{bindings.Description.hints.mandatory}"
+                          columns="#{bindings.Description.hints.displayWidth}"
+                          maximumLength="#{bindings.Description.hints.precision}"
+                          shortDesc="#{bindings.Description.hints.tooltip}"
+                          binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.it2}"
+                          id="it2">
+              <f:validator binding="#{bindings.Description.validator}"/>
+            </af:inputText>
+            <af:selectBooleanCheckbox value="#{bindings.ActiveYn.inputValue}"
+                                      label="Active ?"
+                                      shortDesc="#{bindings.ActiveYn.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.sbc4}"
+                                      id="sbc4"/>
+          </af:panelFormLayout>
+          <af:panelTabbed position="left" id="pt2" styleClass="AFStretchWidth"
+                          dimensionsFrom="auto" rendered="true"
+                          partialTriggers="it1">
+            <af:showDetailItem id="tab1" text="Attributes"
+                               disclosureListener="#{backingBeanScope.backing_taskflow_AddEditAttribute.onclicktabrefresh}">
+              <af:panelBox text="Attributes"
+                           binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.pb1}"
+                           id="pb1">
+                <f:facet name="toolbar"/>
+                <af:panelCollection binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.pc1}"
+                                    id="pc1" styleClass="AFStretchWidth">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar">
+                    <af:toolbar binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.t1}"
+                                id="t1" flex="1">
+                      <af:commandImageLink binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.cil1}"
+                                           id="cil1" icon="/image/add.png"
+                                           hoverIcon="/image/add_en.png"
+                                           actionListener="#{backingBeanScope.backing_taskflow_AddEditAttribute.onClickAttrCreate}"
+                                           partialSubmit="true"/>
+                      <af:spacer width="10" height="10"
+                                 binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.s2}"
+                                 id="s2"/>
+                      <af:commandImageLink actionListener="#{bindings.Delete.execute}"
+                                           disabled="#{!bindings.Delete.enabled}"
+                                           binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.cil2}"
+                                           id="cil2" icon="/image/delete.png"
+                                           hoverIcon="/image/delete_en.png"
+                                           partialSubmit="true"/>
+                      <af:spacer width="10" height="10"
+                                 binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.s3}"
+                                 id="s3"/>
+                      <af:commandImageLink actionListener="#{bindings.Commit.execute}"
+                                           binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.cil3}"
+                                           id="cil3" partialSubmit="true"
+                                           rendered="true"
+                                           icon="/image/save_ena.png"/>
+                    </af:toolbar>
+                  </f:facet>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.ApprAttributes_VO1.collectionModel}"
+                            var="row"
+                            rows="#{bindings.ApprAttributes_VO1.rangeSize}"
+                            emptyText="#{bindings.ApprAttributes_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.ApprAttributes_VO1.rangeSize}"
+                            rowBandingInterval="0"
+                            selectedRowKeys="#{bindings.ApprAttributes_VO1.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.ApprAttributes_VO1.collectionModel.makeCurrent}"
+                            rowSelection="single"
+                            binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.t2}"
+                            id="t2" partialTriggers="::cil1 :::it1"
+                            contentDelivery="immediate" autoHeightRows="-1">
+                    <af:column sortProperty="#{bindings.ApprAttributes_VO1.hints.SeqNumber.name}"
+                               sortable="false" headerText="Seq Number" id="c4"
+                               width="80">
+                      <af:inputText value="#{row.bindings.SeqNumber.inputValue}"
+                                    label="#{bindings.ApprAttributes_VO1.hints.SeqNumber.label}"
+                                    required="#{bindings.ApprAttributes_VO1.hints.SeqNumber.mandatory}"
+                                    columns="#{bindings.ApprAttributes_VO1.hints.SeqNumber.displayWidth}"
+                                    maximumLength="#{bindings.ApprAttributes_VO1.hints.SeqNumber.precision}"
+                                    shortDesc="#{bindings.ApprAttributes_VO1.hints.SeqNumber.tooltip}"
+                                    id="it4">
+                        <f:validator binding="#{row.bindings.SeqNumber.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.ApprAttributes_VO1.hints.SeqNumber.format}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ApprAttributes_VO1.hints.AttributeColumn.name}"
+                               sortable="false" headerText="Attribute Column"
+                               id="c2" width="180">
+                      <af:selectOneChoice value="#{row.bindings.AttributeColumn.inputValue}"
+                                          label="#{row.bindings.AttributeColumn.label}"
+                                          required="#{bindings.ApprAttributes_VO1.hints.AttributeColumn.mandatory}"
+                                          shortDesc="#{bindings.ApprAttributes_VO1.hints.AttributeColumn.tooltip}"
+                                          id="soc4" autoSubmit="true">
+                        <f:selectItems value="#{row.bindings.AttributeColumn.items}"
+                                       id="si1"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ApprAttributes_VO1.hints.ColumnName.name}"
+                               sortable="false" headerText="Column Name" id="c5"
+                               width="180">
+                      <af:inputText value="#{row.bindings.ColumnName.inputValue}"
+                                    label="#{bindings.ApprAttributes_VO1.hints.ColumnName.label}"
+                                    required="#{bindings.ApprAttributes_VO1.hints.ColumnName.mandatory}"
+                                    columns="#{bindings.ApprAttributes_VO1.hints.ColumnName.displayWidth}"
+                                    maximumLength="#{bindings.ApprAttributes_VO1.hints.ColumnName.precision}"
+                                    shortDesc="#{bindings.ApprAttributes_VO1.hints.ColumnName.tooltip}"
+                                    id="it3" autoSubmit="true">
+                        <f:validator binding="#{row.bindings.ColumnName.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ApprAttributes_VO1.hints.SrcTable.name}"
+                               sortable="false" headerText="Source Table"
+                               id="c1" width="180">
+                      <af:selectOneChoice value="#{row.bindings.SrcTable.inputValue}"
+                                          label="#{row.bindings.SrcTable.label}"
+                                          required="#{bindings.ApprAttributes_VO1.hints.SrcTable.mandatory}"
+                                          shortDesc="#{bindings.ApprAttributes_VO1.hints.SrcTable.tooltip}"
+                                          id="soc2" autoSubmit="true">
+                        <f:selectItems value="#{row.bindings.SrcTable.items}"
+                                       id="si2"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ApprAttributes_VO1.hints.SrcColumn.name}"
+                               sortable="false" headerText="Source Column"
+                               id="c3" width="180">
+                      <af:selectOneChoice value="#{row.bindings.SrcColumn.inputValue}"
+                                          label="#{row.bindings.SrcColumn.label}"
+                                          required="#{bindings.ApprAttributes_VO1.hints.SrcColumn.mandatory}"
+                                          shortDesc="#{bindings.ApprAttributes_VO1.hints.SrcColumn.tooltip}"
+                                          id="soc3" partialTriggers="soc2"
+                                          autoSubmit="true">
+                        <f:selectItems value="#{row.bindings.SrcColumn.items}"
+                                       id="si4"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ApprAttributes_VO1.hints.SrcDispColumn.name}"
+                               sortable="false"
+                               headerText="Source Display Column" id="c6"
+                               width="180">
+                      <af:selectOneChoice value="#{row.bindings.SrcDispColumn.inputValue}"
+                                          label="#{row.bindings.SrcDispColumn.label}"
+                                          required="#{bindings.ApprAttributes_VO1.hints.SrcDispColumn.mandatory}"
+                                          shortDesc="#{bindings.ApprAttributes_VO1.hints.SrcDispColumn.tooltip}"
+                                          id="soc5" partialTriggers="soc2"
+                                          autoSubmit="true">
+                        <f:selectItems value="#{row.bindings.SrcDispColumn.items}"
+                                       id="si3"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ApprAttributes_VO1.hints.SrcLookupType.name}"
+                               sortable="false" headerText="Lookup Type" id="c7"
+                               width="180">
+                      <af:selectOneChoice value="#{row.bindings.SrcLookupType.inputValue}"
+                                          label="#{row.bindings.SrcLookupType.label}"
+                                          required="#{bindings.ApprAttributes_VO1.hints.SrcLookupType.mandatory}"
+                                          shortDesc="#{bindings.ApprAttributes_VO1.hints.SrcLookupType.tooltip}"
+                                          id="soc1"
+                                          disabled="#{row.bindings.SrcTable.inputValue=='XXFND_LOOKUP_VALUES'?'true':'false'}"
+                                          autoSubmit="true">
+                        <f:selectItems value="#{row.bindings.SrcLookupType.items}"
+                                       id="si5"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                    <af:column headerText="Active ?" id="c8" width="80">
+                      <af:selectBooleanCheckbox value="#{row.bindings.Trns_Active.inputValue}"
+                                                label="#{row.bindings.Trns_Active.label}"
+                                                shortDesc="#{bindings.ApprAttributes_VO1.hints.Trns_Active.tooltip}"
+                                                id="sbc1"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </af:panelBox>
+            </af:showDetailItem>
+            <af:showDetailItem text="showDetailItem 2" id="sdi1"
+                               disclosureListener="#{backingBeanScope.backing_taskflow_AddEditAttribute.onclickCombrefresh}">
+              <af:panelBox text="Combinations"
+                           binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.pb2}"
+                           id="pb2">
+                <f:facet name="toolbar"/>
+                <af:panelCollection binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.pc2}"
+                                    id="pc2" styleClass="AFStretchWidth">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar">
+                    <af:toolbar binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.t3}"
+                                id="t3" flex="1">
+                      <af:commandImageLink
+                                           binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.cil4}"
+                                           id="cil4" icon="/image/add.png"
+                                           hoverIcon="/image/add_en.png"
+                                           actionListener="#{backingBeanScope.backing_taskflow_AddEditAttribute.OnclickCreate}"
+                                           partialSubmit="true"/>
+                      <af:spacer width="10" height="10"
+                                 binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.s4}"
+                                 id="s4"/>
+                      <af:commandImageLink actionListener="#{bindings.Delete1.execute}"
+                                           disabled="#{!bindings.Delete1.enabled}"
+                                           binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.cil5}"
+                                           id="cil5" icon="/image/delete.png"
+                                           hoverIcon="/image/delete_en.png"
+                                           partialSubmit="true"/>
+                    </af:toolbar>
+                  </f:facet>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.ApprAttrComb_VO1.collectionModel}"
+                            var="row"
+                            rows="#{bindings.ApprAttrComb_VO1.rangeSize}"
+                            emptyText="#{bindings.ApprAttrComb_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.ApprAttrComb_VO1.rangeSize}"
+                            rowBandingInterval="0"
+                            selectedRowKeys="#{bindings.ApprAttrComb_VO1.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.ApprAttrComb_VO1.collectionModel.makeCurrent}"
+                            rowSelection="single"
+                            binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.t4}"
+                            id="t4" partialTriggers="::cil4">
+                    <af:column sortProperty="#{bindings.ApprAttrComb_VO1.hints.Attribute1.name}"
+                               sortable="false"
+                               headerText="#{backingBeanScope.backing_taskflow_AddEditAttribute.segment1}"
+                               id="c10" width="180"
+                               rendered="#{backingBeanScope.backing_taskflow_AddEditAttribute.render1}">
+                      <af:selectOneChoice value="#{row.bindings.Attribute1.inputValue}"
+                                          label="#{row.bindings.Attribute1.label}"
+                                          required="#{bindings.ApprAttrComb_VO1.hints.Attribute1.mandatory}"
+                                          shortDesc="#{bindings.ApprAttrComb_VO1.hints.Attribute1.tooltip}"
+                                          id="soc7">
+                        <f:selectItems value="#{row.bindings.Attribute1.items}"
+                                       id="si9"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ApprAttrComb_VO1.hints.Attribute2.name}"
+                               sortable="false"
+                               headerText="#{backingBeanScope.backing_taskflow_AddEditAttribute.segment2}"
+                               id="c13" width="180"
+                               rendered="#{backingBeanScope.backing_taskflow_AddEditAttribute.render2}">
+                      <af:selectOneChoice value="#{row.bindings.Attribute2.inputValue}"
+                                          label="#{row.bindings.Attribute2.label}"
+                                          required="#{bindings.ApprAttrComb_VO1.hints.Attribute2.mandatory}"
+                                          shortDesc="#{bindings.ApprAttrComb_VO1.hints.Attribute2.tooltip}"
+                                          id="soc10">
+                        <f:selectItems value="#{row.bindings.Attribute2.items}"
+                                       id="si10"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ApprAttrComb_VO1.hints.Attribute3.name}"
+                               sortable="false"
+                               headerText="#{backingBeanScope.backing_taskflow_AddEditAttribute.segment3}"
+                               id="c11" width="180"
+                               rendered="#{backingBeanScope.backing_taskflow_AddEditAttribute.render3}">
+                      <af:selectOneChoice value="#{row.bindings.Attribute3.inputValue}"
+                                          label="#{row.bindings.Attribute3.label}"
+                                          required="#{bindings.ApprAttrComb_VO1.hints.Attribute3.mandatory}"
+                                          shortDesc="#{bindings.ApprAttrComb_VO1.hints.Attribute3.tooltip}"
+                                          id="soc6">
+                        <f:selectItems value="#{row.bindings.Attribute3.items}"
+                                       id="si6"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ApprAttrComb_VO1.hints.Attribute4.name}"
+                               sortable="false"
+                               headerText="#{backingBeanScope.backing_taskflow_AddEditAttribute.segment4}"
+                               id="c9" width="180"
+                               rendered="#{backingBeanScope.backing_taskflow_AddEditAttribute.render4}">
+                      <af:selectOneChoice value="#{row.bindings.Attribute4.inputValue}"
+                                          label="#{row.bindings.Attribute4.label}"
+                                          required="#{bindings.ApprAttrComb_VO1.hints.Attribute4.mandatory}"
+                                          shortDesc="#{bindings.ApprAttrComb_VO1.hints.Attribute4.tooltip}"
+                                          id="soc8">
+                        <f:selectItems value="#{row.bindings.Attribute4.items}"
+                                       id="si7"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ApprAttrComb_VO1.hints.Attribute5.name}"
+                               sortable="false"
+                               headerText="#{backingBeanScope.backing_taskflow_AddEditAttribute.segment5}"
+                               id="c14" width="180"
+                               rendered="#{backingBeanScope.backing_taskflow_AddEditAttribute.render5}">
+                      <af:selectOneChoice value="#{row.bindings.Attribute5.inputValue}"
+                                          label="#{row.bindings.Attribute5.label}"
+                                          required="#{bindings.ApprAttrComb_VO1.hints.Attribute5.mandatory}"
+                                          shortDesc="#{bindings.ApprAttrComb_VO1.hints.Attribute5.tooltip}"
+                                          id="soc9">
+                        <f:selectItems value="#{row.bindings.Attribute5.items}"
+                                       id="si8"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.ApprAttrComb_VO1.hints.UserGrpId.name}"
+                               sortable="false" headerText="User Group Name"
+                               id="c12" width="180">
+                      <af:selectOneChoice value="#{row.bindings.UserGrpId.inputValue}"
+                                          label="#{row.bindings.UserGrpId.label}"
+                                          required="#{bindings.ApprAttrComb_VO1.hints.UserGrpId.mandatory}"
+                                          shortDesc="#{bindings.ApprAttrComb_VO1.hints.UserGrpId.tooltip}"
+                                          id="soc11">
+                        <f:selectItems value="#{row.bindings.UserGrpId.items}"
+                                       id="si11"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                    <af:column headerText="Active ?" id="c15" width="80">
+                      <af:selectBooleanCheckbox value="#{row.bindings.Trns_Active_1.inputValue}"
+                                                label="#{row.bindings.Trns_Active_1.label}"
+                                                shortDesc="#{bindings.ApprAttrComb_VO1.hints.Trns_Active_1.tooltip}"
+                                                id="sbc2"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </af:panelBox>
+            </af:showDetailItem>
+            <af:showDetailItem text="showDetailItem 3" id="sdi2">
+              <af:panelBox text="Functions"
+                           binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.pb3}"
+                           id="pb3">
+                <f:facet name="toolbar"/>
+                <af:panelCollection binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.pc3}"
+                                    id="pc3" styleClass="AFStretchWidth">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar">
+                    <af:toolbar binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.t6}"
+                                id="t6" flex="1">
+                      <af:commandImageLink actionListener="#{bindings.CreateInsert2.execute}"
+                                           disabled="#{!bindings.CreateInsert2.enabled}"
+                                           binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.cil6}"
+                                           id="cil6" icon="/image/add.png"
+                                           hoverIcon="/image/add_en.png"
+                                           partialSubmit="true"/>
+                      <af:spacer width="10" height="10"
+                                 binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.s5}"
+                                 id="s5"/>
+                      <af:commandImageLink actionListener="#{bindings.Delete2.execute}"
+                                           disabled="#{!bindings.Delete2.enabled}"
+                                           binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.cil7}"
+                                           id="cil7" icon="/image/delete.png"
+                                           partialSubmit="true"/>
+                    </af:toolbar>
+                  </f:facet>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.FuncApprovals_VO1.collectionModel}"
+                            var="row"
+                            rows="#{bindings.FuncApprovals_VO1.rangeSize}"
+                            emptyText="#{bindings.FuncApprovals_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.FuncApprovals_VO1.rangeSize}"
+                            rowBandingInterval="0"
+                            selectedRowKeys="#{bindings.FuncApprovals_VO1.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.FuncApprovals_VO1.collectionModel.makeCurrent}"
+                            rowSelection="single"
+                            binding="#{backingBeanScope.backing_taskflow_AddEditAttribute.t5}"
+                            id="t5" partialTriggers="::cil7 ::cil6">
+                    <af:column sortProperty="#{bindings.FuncApprovals_VO1.hints.FuncId.name}"
+                               sortable="false" headerText="Functions" id="c16"
+                               width="180">
+                      <af:selectOneChoice value="#{row.bindings.FuncId.inputValue}"
+                                          label="#{row.bindings.FuncId.label}"
+                                          required="#{bindings.FuncApprovals_VO1.hints.FuncId.mandatory}"
+                                          shortDesc="#{bindings.FuncApprovals_VO1.hints.FuncId.tooltip}"
+                                          id="soc13">
+                        <f:selectItems value="#{row.bindings.FuncId.items}"
+                                       id="si12"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.FuncApprovals_VO1.hints.AttrGrpId.name}"
+                               sortable="false" headerText="Group Name" id="c17"
+                               width="180">
+                      <af:selectOneChoice value="#{row.bindings.AttrGrpId.inputValue}"
+                                          label="#{row.bindings.AttrGrpId.label}"
+                                          required="#{bindings.FuncApprovals_VO1.hints.AttrGrpId.mandatory}"
+                                          shortDesc="#{bindings.FuncApprovals_VO1.hints.AttrGrpId.tooltip}"
+                                          id="soc12">
+                        <f:selectItems value="#{row.bindings.AttrGrpId.items}"
+                                       id="si13"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                    <af:column headerText="Active ?" id="c18" width="80">
+                      <af:selectBooleanCheckbox value="#{row.bindings.Trans_Active.inputValue}"
+                                                label="#{row.bindings.Trans_Active.label}"
+                                                shortDesc="#{bindings.FuncApprovals_VO1.hints.Trans_Active.tooltip}"
+                                                id="sbc3"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </af:panelBox>
+            </af:showDetailItem>
+          </af:panelTabbed>
+        </af:panelGroupLayout>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="footerStart"/>
+    <f:facet name="footer"/>
+    <f:facet name="footerEnd"/>
+    <f:facet name="headerStart"/>
+    <f:facet name="header"/>
+    <f:facet name="headerEnd"/>
+  </af:pageTemplate>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_taskflow_AddEditAttribute-->
+</jsp:root>

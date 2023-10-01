@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73"
+                id="UserGroup_BTF_UserGroup_BTF_ExecuteWithParamsPageDef"
+                Package="taskflow" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="ApprUserGroup_VO1" RangeSize="25"
+              DataControl="UserGroup_AMDataControl"
+              id="ApprUserGroup_VO1Iterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="ApprUserGroup_VO1Iterator" id="ExecuteWithParams"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="BV_GID" NDValue="#{pageFlowScope.gid}"
+                 NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>
